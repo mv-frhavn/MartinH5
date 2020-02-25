@@ -2,7 +2,7 @@ import pyodbc
 
 
 class Article:
-    def __init__(self, name, description, article_id):
+    def __init__(self, article_id, name, description):
         self.article_id = article_id
         self.name = name
         self.description = description
@@ -21,7 +21,7 @@ class Article:
         cursor.commit()
         return
 
-    def new_art(self):
+    def new_item(self):
         try:
             query = """
             INSERT INTO Article ([Article_Id], [Name], [Description])
@@ -31,14 +31,24 @@ class Article:
         except:
             return False
 
-    def rem_art(self):
+    def rem_item(self):
         try:
             query = """
-            DELETE FROM [Article] WHERE [Article_Id] = 3 or [Name] = 'test1';
-            """
-            cursor = self.conn.cursor()
-            cursor.execute(query)
-            cursor.commit()
+            DELETE FROM [Article] WHERE [Article_Id] = {0};
+            """.format(self.article_id)
+            self.execute(query)
+
+        except:
+            return False
+
+    def mod_item(self):
+        try:
+            query = """
+            UPDATE [Article]
+            SET [Name] = '{0}', [Description] = '{1}'
+            WHERE [Article_Id] = {2};
+            """.format(self.name, self.description, self.article_id)
+            self.execute(query)
 
         except:
             return False
@@ -53,30 +63,36 @@ class StockItem(Article):
 
     def new_item(self):
         try:
-            sql = """
-            INSERT INTO [Stockitem] ([Stockitem_Id], [ItemNumber], [Weight], [Quantity], [Article_Id], [Location_Id])
-            VALUES ('3', '90LM04G0-B01370', '5.6 kg', '1', '3', '3');
-            """
-            cursor = self.conn.cursor()
-            cursor.execute(sql)
-
-            cursor.commit()
+            query = """
+            INSERT INTO [Stockitem] ([Stockitem_Id], [Quantity], [Article_Id], [Location_Id])
+            VALUES ('{0}', '{1}', '{2}', '{3}');
+            """.format(self.stock_item_id, self.quantity, self.article_id, self.location_id)
+            self.execute(query)
 
         except:
             return False
 
-        #for row in cursor:
-         #   print(row)
-
     def rem_item(self):
-        pass
+        try:
+            query = """
+            DELETE FROM [Stockitem] WHERE [Stockitem_Id] = {0};
+            """.format(self.stock_item_id)
+            self.execute(query)
 
-    def inc_quant(self):
-        pass
+        except:
+            return False
 
-    def dec_quant(self):
-        pass
+    def mod_quant(self):
+        try:
+            query = """
+            UPDATE [Stockitem]
+            SET [Quantity] = '{0}'
+            WHERE [Stockitem_Id] = {1};
+            """.format(self.quantity, self.stock_item_id)
+            self.execute(query)
 
+        except:
+            return False
 
 class Location:
     def __init__(self, location_id, position):
@@ -93,4 +109,7 @@ class Location:
         pass
 
 
-item1 = Article('test1', 'total bedst i test', 4).new_art()
+#item1 = Article('3', 'Razer', 'Naga - mouse with 16 bottoms, decent for MMORPG').mod_art()
+
+#item2 = StockItem('3', 'Razer', 'Naga  Mus', 3, 5, 3).new_item()
+
