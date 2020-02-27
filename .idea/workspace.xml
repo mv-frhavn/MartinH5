@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f79d60d-1cfd-4b9b-8f82-4d4cfb03c32a" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,21 +20,14 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectId" id="1Xko76pUzC1gJf4VDAObsPNgsNy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projekt Bank" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.Webshop">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -112,5 +104,43 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1899" height="256" key="GridCell.Tab.0.bottom" timestamp="1582809350465">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="256" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582809350465" />
+    <state width="1899" height="256" key="GridCell.Tab.0.center" timestamp="1582809350464">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="256" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582809350464" />
+    <state width="1899" height="256" key="GridCell.Tab.0.left" timestamp="1582809350464">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="256" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582809350464" />
+    <state width="1899" height="256" key="GridCell.Tab.0.right" timestamp="1582809350465">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="256" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582809350465" />
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1582805443275">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582805443275" />
+    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1582805443275">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582805443275" />
+    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1582805443275">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582805443275" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1582805443275">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582805443275" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1582796398399">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582796398399" />
   </component>
 </project>

@@ -1,25 +1,35 @@
 import pyodbc
 
 
-class Article:
-    def __init__(self, article_id, name, description):
-        self.article_id = article_id
-        self.name = name
-        self.description = description
-        self.conn = self.connectdb()
+class DBClass:
+    def __init__(self):
+        self.conn = self.connect_db()
 
-    def connectdb(self):
+    @staticmethod
+    def connect_db():
         conn = pyodbc.connect('Driver={SQL Server};'
                               'Server=LAPTOP-TBKK5A8K;'
                               'Database=SQL Intro;'
                               'Trusted_Connection=yes;')
+
         return conn
 
-    def execute(self, query):
+    def terminal(self, query, show=False):
         cursor = self.conn.cursor()
         cursor.execute(query)
-        cursor.commit()
-        return
+        if show is True:
+            for row in cursor:
+                print(row)
+        else:
+            cursor.commit()
+
+
+class Article(DBClass):
+    def __init__(self, article_id, name, description):
+        super().__init__()
+        self.article_id = article_id
+        self.name = name
+        self.description = description
 
     def new_item(self):
         try:
@@ -27,7 +37,7 @@ class Article:
             INSERT INTO Article ([Article_Id], [Name], [Description])
             VALUES ('{0}', '{1}', '{2}');
             """.format(self.article_id, self.name, self.description)
-            self.execute(query)
+            self.terminal(query)
         except:
             return False
 
@@ -36,7 +46,7 @@ class Article:
             query = """
             DELETE FROM [Article] WHERE [Article_Id] = {0};
             """.format(self.article_id)
-            self.execute(query)
+            self.terminal(query)
 
         except:
             return False
@@ -48,26 +58,26 @@ class Article:
             SET [Name] = '{0}', [Description] = '{1}'
             WHERE [Article_Id] = {2};
             """.format(self.name, self.description, self.article_id)
-            self.execute(query)
+            self.terminal(query)
 
         except:
             return False
 
 
 class StockItem(Article):
-    def __init__(self, article_id, name, description, stock_item_id, quantity, location_id):
+    def __init__(self, article_id, name, description, stock_item_id, quantity, location):
         super().__init__(article_id, name, description)
         self.stock_item_id = stock_item_id
         self.quantity = quantity
-        self.location_id = location_id
+        self.location = location
 
     def new_item(self):
         try:
             query = """
             INSERT INTO [Stockitem] ([Stockitem_Id], [Quantity], [Article_Id], [Location_Id])
             VALUES ('{0}', '{1}', '{2}', '{3}');
-            """.format(self.stock_item_id, self.quantity, self.article_id, self.location_id)
-            self.execute(query)
+            """.format(self.stock_item_id, self.quantity, self.article_id, self.location.location_id)
+            self.terminal(query)
 
         except:
             return False
@@ -77,39 +87,79 @@ class StockItem(Article):
             query = """
             DELETE FROM [Stockitem] WHERE [Stockitem_Id] = {0};
             """.format(self.stock_item_id)
-            self.execute(query)
+            self.terminal(query)
 
         except:
             return False
 
-    def mod_quant(self):
+    def inc_quant(self):
         try:
             query = """
-            UPDATE [Stockitem]
-            SET [Quantity] = '{0}'
-            WHERE [Stockitem_Id] = {1};
-            """.format(self.quantity, self.stock_item_id)
-            self.execute(query)
+            update [Stockitem] 
+            set Quantity = Quantity + 1 
+            where [Stockitem_Id] = {0}
+            """.format(self.stock_item_id)
+            self.terminal(query)
 
         except:
             return False
 
-class Location:
+    def dec_quant(self):
+        try:
+            query = """
+            update [Stockitem] 
+            set Quantity = Quantity - 1 
+            where [Stockitem_Id] = {0}
+            """.format(self.stock_item_id)
+            self.terminal(query)
+
+        except:
+            return False
+
+
+class Location(DBClass):
     def __init__(self, location_id, position):
+        super().__init__()
         self.location_id = location_id
         self.position = position
 
-    def new_location(self):
-        pass
+    def new_item(self):
+        try:
+            query = """
+            INSERT INTO [Location] ([Location_Id], [Position])
+            VALUES ({0}, {1});
+            """.format(self.location_id, self.position)
+            #self.connectdb()
+            self.terminal(query)
 
-    def rem_location(self):
-        pass
+        except:
+            return False
+
+    def rem_item(self):
+        try:
+            query = """
+            DELETE FROM [Location] WHERE [Location_Id] = {0};
+            """.format(self.location_id)
+            self.terminal(query)
+
+        except:
+            return False
 
     def extract_store(self):
-        pass
+        try:
+            query = 'SELECT * FROM dbo.Article'
+            self.terminal(query, show=True)
+        except:
+            return False
 
 
 #item1 = Article('3', 'Razer', 'Naga - mouse with 16 bottoms, decent for MMORPG').mod_art()
 
-#item2 = StockItem('3', 'Razer', 'Naga  Mus', 3, 5, 3).new_item()
+#item2 = StockItem('3', 'Razer', 'Razer mouse', 3, 5, 3).dec_quant()
 
+#item3 = Location(4, 4)
+
+item3 = StockItem(4, 'dav', 'God dav do', 4, 4, Location(4, 4)).new_item()
+
+#s = StockItem(2, "dsaf", "", 3, 3, item3)
+#print(s.location.location_id)
