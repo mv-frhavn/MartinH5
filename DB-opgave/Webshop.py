@@ -153,13 +153,5 @@ class Location(DBClass):
             return False
 
 
-#item1 = Article('3', 'Razer', 'Naga - mouse with 16 bottoms, decent for MMORPG').mod_art()
-
-#item2 = StockItem('3', 'Razer', 'Razer mouse', 3, 5, 3).dec_quant()
-
-#item3 = Location(4, 4)
-
 item3 = StockItem(4, 'dav', 'God dav do', 4, 4, Location(4, 4)).new_item()
 
-#s = StockItem(2, "dsaf", "", 3, 3, item3)
-#print(s.location.location_id)
