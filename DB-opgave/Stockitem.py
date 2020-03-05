@@ -52,4 +52,3 @@ class StockItem(Article):  # inherit from Article class (and by that also the DB
             return True
         except:
             return False
-

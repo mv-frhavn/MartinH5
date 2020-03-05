@@ -27,11 +27,3 @@ class Location(DBClass):  # Only inherit from the DB Class
             return True
         except:
             return False
-
-    def extract_store(self):  # Shows the data in a given DB
-        #  This should be moved to DBclass and made available to all 3 databases, FUTURE PROJECT
-        try:
-            query = 'SELECT * FROM dbo.Location'
-            return self.terminal(query, show=True)  # uses the terminal overload, since its a select statement
-        except:
-            return False

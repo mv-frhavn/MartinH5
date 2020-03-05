@@ -25,6 +25,23 @@ class DBClass:  # DBclass that all classes inherit from, to give them the functi
         else:
             cursor.commit()
 
+    def extract_store(self):  # Shows the data in a given DB
+        #  This should be moved to DBclass and made available to all 3 databases, FUTURE PROJECT
+        try:
+            database = None
+            if self.__class__.__name__ == 'Location':
+                database = 'dbo.Location'
+            elif self.__class__.__name__ == 'StockItem':
+                database = 'dbo.Stockitem'
+            elif self.__class__.__name__ == 'Article':
+                database = 'dbo.Article'
+            else:
+                database = __class__.__name__
+            query = 'SELECT * from {0}'.format(database)
+            return self.terminal(query, show=True)  # uses the terminal overload, since its a select statement
+        except:
+            return False
+
 
 class Article(DBClass):  # inherit from DB class, will contain all the functions for Article DB handling
     def __init__(self, article_id, name, description):

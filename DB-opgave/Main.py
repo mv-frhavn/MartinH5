@@ -53,12 +53,13 @@ class Main:
     elif initial_choice == '5':  # Increase the quantity of an Item in stock
         print('still under development')
     elif initial_choice == '6':  # Decrease the quantity of an Item in stock
-        print('you picked 6')
-    else:
         print('still under development')
+    else:
+        print('Wrong input')
 
 
 Main()
 
-# item2 = Article.Article(1, 'Razer phone', '120hz monitor, 16 GB ram').new_item()
-# item3 = StockItem(4, 'dav', 'God dav do', 4, 4, Location(4, 4))
+# The extract_store returns the output to the object, so it has to be printed to see the result
+# print(Article.Article(1, 'Razer phone', '120hz monitor, 16 GB ram').extract_store())
+
