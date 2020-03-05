@@ -14,7 +14,7 @@ class Location(DBClass):  # Only inherit from the DB Class
             VALUES ({0}, {1});
             """.format(self.location_id, self.position)
             self.terminal(query)
-
+            return True
         except:
             return False
 
@@ -24,14 +24,14 @@ class Location(DBClass):  # Only inherit from the DB Class
             DELETE FROM [Location] WHERE [Location_Id] = {0};
             """.format(self.location_id)
             self.terminal(query)
-
+            return True
         except:
             return False
 
     def extract_store(self):  # Shows the data in a given DB
         #  This should be moved to DBclass and made available to all 3 databases, FUTURE PROJECT
         try:
-            query = 'SELECT * FROM dbo.Article'
-            self.terminal(query, show=True)  # uses the terminal overload, since its a select statement
+            query = 'SELECT * FROM dbo.Location'
+            return self.terminal(query, show=True)  # uses the terminal overload, since its a select statement
         except:
             return False

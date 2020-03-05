@@ -15,7 +15,7 @@ class StockItem(Article):  # inherit from Article class (and by that also the DB
             VALUES ('{0}', '{1}', '{2}', '{3}');
             """.format(self.stock_item_id, self.quantity, self.article_id, self.location.location_id)
             self.terminal(query)
-
+            return True
         except:
             return False
 
@@ -25,7 +25,7 @@ class StockItem(Article):  # inherit from Article class (and by that also the DB
             DELETE FROM [Stockitem] WHERE [Stockitem_Id] = {0};
             """.format(self.stock_item_id)
             self.terminal(query)
-
+            return True
         except:
             return False
 
@@ -37,11 +37,11 @@ class StockItem(Article):  # inherit from Article class (and by that also the DB
             where [Stockitem_Id] = {0}
             """.format(self.stock_item_id)
             self.terminal(query)
-
+            return True
         except:
             return False
 
-    def dec_quant(self):  # Same as the class before, but decrease the quantity
+    def dec_quant(self):  # Same as the method before, but decrease the quantity
         try:
             query = """
             update [Stockitem] 
@@ -49,7 +49,7 @@ class StockItem(Article):  # inherit from Article class (and by that also the DB
             where [Stockitem_Id] = {0}
             """.format(self.stock_item_id)
             self.terminal(query)
-
+            return True
         except:
             return False
 

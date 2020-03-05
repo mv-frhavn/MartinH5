@@ -51,11 +51,11 @@ class Main:
 
         StockItem(None, None, None, stock_item_id, None, None).rem_item()
     elif initial_choice == '5':  # Increase the quantity of an Item in stock
-        print('you picked 5')
+        print('still under development')
     elif initial_choice == '6':  # Decrease the quantity of an Item in stock
         print('you picked 6')
     else:
-        print('Wrong choice! You can only pick between 1 to 6')
+        print('still under development')
 
 
 Main()

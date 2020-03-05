@@ -17,9 +17,11 @@ class DBClass:  # DBclass that all classes inherit from, to give them the functi
     def terminal(self, query, show=False):  # method with overloading, true is used with db select statements
         cursor = self.conn.cursor()
         cursor.execute(query)
+        list_result = list()
         if show is True:
             for row in cursor:
-                print(row)
+                list_result.append(row)
+            return list_result
         else:
             cursor.commit()
 
@@ -38,6 +40,7 @@ class Article(DBClass):  # inherit from DB class, will contain all the functions
             VALUES ('{0}', '{1}', '{2}');
             """.format(self.article_id, self.name, self.description)
             self.terminal(query)
+            return True
         except:
             return False
 
@@ -47,7 +50,7 @@ class Article(DBClass):  # inherit from DB class, will contain all the functions
             DELETE FROM [Article] WHERE [Article_Id] = {0};
             """.format(self.article_id)
             self.terminal(query)
-
+            return True
         except:
             return False
 
@@ -59,6 +62,6 @@ class Article(DBClass):  # inherit from DB class, will contain all the functions
             WHERE [Article_Id] = {2};
             """.format(self.name, self.description, self.article_id)
             self.terminal(query)
-
+            return True
         except:
             return False
